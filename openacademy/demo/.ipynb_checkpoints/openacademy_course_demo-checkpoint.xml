@@ -1,0 +1,8 @@
+<?xml version ="1.0" enclding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="openacademy.course" id="openacademy_course_01">
+            <field name="name">Odoo Technical Training</field>
+        </record>
+    </data>
+</odoo>
