@@ -1,13 +1,83 @@
-<?xml version ="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-      <record model="ir.ui.view" id="view_res_partner_form_inherit" />
-          <field name="name">view.res.partner.form.inherit1</field>
-          <field name="name">res.partner</field>
-          <field name="inherit_id" ref="base_view_partner_form"/>
-          <field name="arch" type="xml" />
-          <field name="website" position="after">
-              <field name="instructor" />
-      </field>
-  </data>
+    <data>
+        <menuitem id="academy_root" name="Academy"/>
+       
+       <record id="view_openacademy_course_tree_normal" model="ir.ui.view">
+            <field name="name">view.openacademy.course.tree</field>
+            <field name="model">openacademy.course</field>
+           <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <tree string="Courses">
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="price" optional="hide"/>
+                    <field name="responsible_id"/>
+                    <field name="expire_date"/>
+                </tree>
+            </field>
+        </record>
+       <record id="view_openacademy_course_tree" model="ir.ui.view">
+            <field name="name">view.openacademy.course.tree</field>
+            <field name="model">openacademy.course</field>
+           <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <tree string="Courses" editable="top">
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="price" optional="hide"/>
+                    <field name="responsible_id"/>
+                    <field name="expire_date"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="view_openacademy_course_form" model="ir.ui.view">
+            <field name="name">view.openacademy.course.form</field>
+            <field name="model">openacademy.course</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <form string="Courses">
+                    <sheet>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="price" optional="hide"/>
+                        <field name="responsible_id"/>
+                        <field name="expire_date"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>    
+    
+        <record model="ir.actions.act_window" id="action_openacademy_views">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">80</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_openacademy_views_tree">
+           <field name="sequence" eval="1"/>
+           <field name="view_mode">tree</field>
+           <field name="view_id" ref="view_openacademy_course_tree_normal"/>
+           <field name="act_window_id" ref="action_openacademy_views"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="action_openacademy_views_form">
+           <field name="sequence" eval="2"/>
+           <field name="view_mode">form</field>
+           <field name="view_id" ref="view_openacademy_course_form"/>
+           <field name="act_window_id" ref="action_openacademy_views"/>
+        </record>
+        
+        <menuitem id="academy_course"
+                  parent="academy_root"
+                  action="action_openacademy_views"
+                  name="Courses"/>
+        <menuitem id="academy_dummy"
+                  parent="academy_root"
+                  name="Dummy Menu"/>
+        
+    </data>
 </odoo>
