@@ -1,8 +1,11 @@
-from odoo import models,fields
+# -*- coding: utf-8 -*-
 
-class Partner (models.Model):
-    _name='res.partner'
-    _inherit='res.partner'
+from odoo import models, fields
+
+
+class Partner(models.Model):
+    #_name = 'res.partner'
+    _inherit = 'res.partner'
     
     instructor = fields.Boolean(string='Instructor')
     
