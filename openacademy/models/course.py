@@ -3,7 +3,7 @@ from odoo import models, fields
 class OpenAcademyTags(models.Model):
     _name = 'openacademy.tags'
     _description = 'Open Academy Tags'
-    name = fieds.Char(string='Name')
+    name = fields.Char(string='Name')
     
 class OpenAcademyCourse(models.Model):
     _name = 'openacademy.course'
@@ -18,4 +18,4 @@ class OpenAcademyCourse(models.Model):
     
     responsible_id = fields.Many2one(comodel_name='res.users',required=True, string='Responsible Id', ondelete='restrict', copy=False)
     
-    tag_ids = fields.Manytomany(comodel_name='openacademy.tags', relation='rel_course_tags', column1='course_id', column2='tag_id', string='Tags')
+    tag_ids = fields.Many2many(comodel_name='openacademy.tags', relation='rel_course_tags', column1='course_id', column2='tag_id', string='Tags')

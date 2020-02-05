@@ -1,25 +1,42 @@
+<?xml version ="1.0" encoding="UTF-8"?>
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="openacademy.list">
-      <field name="name">openacademy list</field>
-      <field name="model">openacademy.openacademy</field>
+    <record model="ir.ui.view" id="view_openacademy_course_tree">
+      <field name="name">view.openacademy.course.tree</field>
+      <field name="model">openacademy.course</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree string="Courses">
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="responsible_id"/>
+          <field name="price"/>
+          <field name="expire_date"/>
         </tree>
       </field>
     </record>
--->
-
+    <record model="ir.ui.view" id="view_openacademy_course_form">
+      <field name="name">view.openacademy.course.form</field>
+      <field name="model">openacademy.course</field>
+      <field name="arch" type="xml">
+        <form string="Courses">
+            <header>
+            </header>
+            <sheet>
+                <group>
+                  <field name="name"/>
+                  <field name="responsible_id"/>
+                  <field name="price"/>
+                  <field name="expire_date"/>
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="openacademy.action_window">
-      <field name="name">openacademy window</field>
-      <field name="res_model">openacademy.openacademy</field>
+
+    <record model="ir.actions.act_window" id="action_openacademy_views">
+      <field name="name">Courses</field>
+      <field name="res_model">openacademy.course</field>
       <field name="view_mode">tree,form</field>
     </record>
 -->
