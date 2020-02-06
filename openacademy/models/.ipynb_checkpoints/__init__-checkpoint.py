@@ -2,4 +2,5 @@
 
 from . import course
 from . import session
+from . import attendance
 from . import partner

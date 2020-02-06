@@ -10,10 +10,11 @@
             <field name="arch" type="xml">
                 <tree string="Courses">
                     <field name="name"/>
-                    <field name="active"/>
+                    <field name="active" widget="boolean_toggle"/>
                     <field name="price" optional="hide"/>
                     <field name="responsible_id"/>
                     <field name="expire_date"/>
+                    <field name="tag_ids" widget="many2many_tags" />
                 </tree>
             </field>
         </record>
@@ -39,11 +40,14 @@
             <field name="arch" type="xml">
                 <form string="Courses">
                     <sheet>
-                        <field name="name"/>
-                        <field name="active"/>
-                        <field name="price" optional="hide"/>
-                        <field name="responsible_id"/>
-                        <field name="expire_date"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="price" optional="hide"/>
+                            <field name="responsible_id"/>
+                            <field name="expire_date"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>    
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -74,7 +78,8 @@
         <menuitem id="academy_course"
                   parent="academy_root"
                   action="action_openacademy_views"
-                  name="Courses"/>
+                  name="Courses"
+                  sequence="20"/>
         <menuitem id="academy_dummy"
                   parent="academy_root"
                   name="Dummy Menu"/>

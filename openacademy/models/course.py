@@ -8,7 +8,7 @@ class OpenAcademyTags(models.Model):
     _description ='OpenAcademy Tags'
 
     name = fields.Char(string='Name')
-
+    color = fields.Integer(string='Color')
     
 class OpenAcademyCourse(models.Model):
     _name = 'openacademy.course'
