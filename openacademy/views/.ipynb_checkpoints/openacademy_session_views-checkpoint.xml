@@ -10,7 +10,8 @@
                     <field name="sequence" widget="handle"/>
                     <field name="name"/>
                     <field name="active" optional="hide"/>
-                    <field name="code" />
+                    <field name="code" groups="openacdemy.group_openacdemy_manager"/>
+                    <field name="responsible_id" readonly="1"/>
                     <field name="start_date"/>
                     <field name="end_date" optional="hide"/>
                     <field name="avail_seat_per" widget="progressbar"/>
@@ -167,7 +168,7 @@
                                         <field name="end_date"/>
                                     </group>
                                     <group name="info2">
-                                        <field name="code"/>
+                                        <field name="code" groups="openacdemy.group_openacdemy_manager"/>
                                         <field name="max_seats"/>
                                         <field name="min_seats"/>
                                         <field name="booked_seats"/>

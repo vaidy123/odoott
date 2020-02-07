@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <template id="get_sessions" name="Sesssion" >
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty"/>
+                <h1>Hi</h1>
+                <div class="wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td><span>Tittle</span></td>
+                                <td><span>Instructor</span></td>
+                                <td><span>Course</span></td>
+                                <td><span>Max Seats</span></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="all_sessions" t-as="session">
+                                <td><a t-att-href="'/session/%d'%(session.id)" t-field="session.name"/></td>
+                                <td><span t-field="session.insructor_id"></span></td>
+                                <td><span t-field="session.course_id"></span></td>
+                                <td><span t-field="session.max_seats"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="wrap" class="oe_structure oe_empty"/>
+            </t>
+        </template>
+        <template id="session" name="Sesssion" >
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty"/>
+                <div class="wrap">
+                    <h1><span t-field="session.name"/></h1>
+                </div>
+                <div id="wrap" class="oe_structure oe_empty"/>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -45,6 +45,9 @@ class OpenAcademySession(models.Model):
     attendees_ids = fields.One2many(comodel_name='openacademy.attendees',
                         inverse_name='session_id', string='Attendees',
                         readonly=True, states={'approve': [('readonly', False)], 'confirm': [('readonly', False)]})
+    responsible_id = fields.Many2one(comodel_name='res.users', store=True,
+                        related='course_id.responsible_id',
+                        string='Responsible', ondelete='restrict')
     state = fields.Selection(selection=[
                             ('draft', 'New'),
                             ('approve', 'Approved'),

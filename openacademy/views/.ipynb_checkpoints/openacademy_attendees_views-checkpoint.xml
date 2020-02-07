@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_openacademy_attendees_tree" model="ir.ui.view">
+            <field name="name">view.openacademy.attendees.tree</field>
+            <field name="model">openacademy.attendees</field>
+           <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <tree string="Attendee" multi_edit="1">
+                    <field name="name"/>
+                    <field name="session_id"/>
+                    <field name="partner_id" optional="hide"/>
+                    <field name="name"/>
+                    <field name="seat_count"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_openacademy_attendees_form" model="ir.ui.view">
+            <field name="name">view.openacademy.attendees.form</field>
+            <field name="model">openacademy.attendees</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <form string="Attendee">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="session_id"/>
+                            <field name="partner_id" optional="hide"/>
+                            <field name="name"/>
+                            <field name="seat_count"/>
+                            <field name="state"/>  
+                        </group>ch
+                    </sheet>
+                </form>
+            </field>
+        </record>    
+    
+        <record model="ir.actions.act_window" id="action_openacademy_attendees_views">
+            <field name="name">Attendees</field>
+            <field name="res_model">openacademy.attendees</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">80</field>
+        </record>
+        
+        <menuitem id="academy_attendees"
+                  parent="openacademy_config_root"
+                  action="action_openacademy_attendees_views"
+                  name="Attendees"
+                  sequence="20"/>
+
+        
+    </data>
+</odoo>

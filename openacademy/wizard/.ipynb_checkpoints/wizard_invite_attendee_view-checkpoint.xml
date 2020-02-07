@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_wizard_invite_attendee_form" model="ir.ui.view">
+            <field name="name">view.wizard.invite.attendee.form</field>
+            <field name="model">wizard.invite.attendee</field>
+           <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <form string="Add Attendees">
+                    <sheet>
+                        <group>
+                            <field name="session_id" options="{'no_create': true, 'no_open': true}"/>
+                        </group>
+                        <field name="attendees_ids">
+                            <tree string="Attendee" editable="bottom">
+                                <field name="partner_id"/>
+                                <field name="name"/>
+                                <field name="seat_count"/>
+                            </tree>
+                            <form string="Attendee">
+                                <group>
+                                    <field name="partner_id"/>
+                                    <field name="name"/>
+                                    <field name="seat_count"/>
+                                    <field name="wizard_id" readonly="1"/>
+                                </group>
+                            </form>
+                        </field>
+                    </sheet>
+                    <footer>
+                        <button name="add_attendees" string="Add Attendees" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_wizard_invite_attendee">
+            <field name="name">Add Attendees</field>
+            <field name="res_model">wizard.invite.attendee</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{}</field>
+        </record>
+        
+        <menuitem id="wizard_action_view_wizard_invite_attendee"
+                  parent="openacademy_root"
+                  action="action_view_wizard_invite_attendee"
+                  name="Add Attendees"
+                  sequence="15"/>
+    </data>
+</odoo>
